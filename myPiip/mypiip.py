@@ -3,7 +3,7 @@
 # Author: Raphael Rabelo (http://github.com/rabeloo)
 
 from boto3.session import Session
-import optparse, sys, socket, fcntl, struct
+import optparse, sys, os, socket, fcntl, struct
 import urllib, re
 import ConfigParser
 
@@ -61,7 +61,7 @@ def main():
     get_external_ip()
 
 parser       = ConfigParser.ConfigParser()
-config       = parser.read('mypiip.ini')
+config       = parser.read(os.path.join(os.path.abspath(os.path.dirname(__file__)), '.', 'mypiip.ini'))
 access_key   = parser.get('config', 'access_key')
 secret_key   = parser.get('config', 'secret_key')
 hosted_zone  = parser.get('config', 'hosted_zone')
