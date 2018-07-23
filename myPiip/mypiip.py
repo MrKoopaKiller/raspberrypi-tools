@@ -17,9 +17,7 @@ def get_local_ip(ifname):
 
 def get_external_ip():
   try:
-    site = urllib.urlopen("http://curlmyip.com").read()
-    grab = re.findall('\d{2,3}.\d{2,3}.\d{2,3}.\d{2,3}',site)
-    external_ip = grab[0]
+    external_ip = urllib.urlopen("http://icanhazip.com").read()
     dns_name(external_dns, external_ip)
   except:
     print "Error: Can't get external ip"
